@@ -101,9 +101,9 @@ void totFuelDisplayPrint(){                                           //Updates 
   tcaselect(4);
   display.clearDisplay();
   display.setCursor(0,0);
+  display.print (totFuelDisplayValue[0]);
   display.print (totFuelDisplayValue[1]);
   display.print (totFuelDisplayValue[2]);
-  display.print (totFuelDisplayValue[3]);
   display.print ("00");
   display.display();
 
@@ -111,19 +111,19 @@ void totFuelDisplayPrint(){                                           //Updates 
 
 
 void onTotFuel1Change(unsigned int newValue) {                                    //Generates the 1st digit of the total fuel gauge
-  totFuelDisplayValue[1] = convertGaugeToInt(newValue, 10);
+  totFuelDisplayValue[0] = convertGaugeToInt(newValue, 10);
   totFuelDisplayPrint();
 }
 DcsBios::IntegerBuffer totFuel1Buffer(0x78b2, 0xffff, 0, onTotFuel1Change);
 
 void onTotFuel2Change(unsigned int newValue) {                                    //Generates the 2nd digit of the total fuel gauge
-  totFuelDisplayValue[2] = convertGaugeToInt(newValue, 10);
+  totFuelDisplayValue[1] = convertGaugeToInt(newValue, 10);
   totFuelDisplayPrint();
 }
 DcsBios::IntegerBuffer totFuel2Buffer(0x78b4, 0xffff, 0, onTotFuel2Change);
 
 void onTotFuel3Change(unsigned int newValue) {                                    //Generates the 3rd digit of the total fuel gauge
-  totFuelDisplayValue[3] = convertGaugeToInt(newValue, 10);
+  totFuelDisplayValue[2] = convertGaugeToInt(newValue, 10);
   totFuelDisplayPrint();
 }
 DcsBios::IntegerBuffer totFuel3Buffer(0x78b6, 0xffff, 0, onTotFuel3Change);
@@ -141,9 +141,9 @@ void LbsLDisplayPrint(){                                           //Updates the
   tcaselect(3);
   display.clearDisplay();
   display.setCursor(0,0);
+  display.print (LbsLValue[0]);
   display.print (LbsLValue[1]);
   display.print (LbsLValue[2]);
-  display.print (LbsLValue[3]);
   display.print ("0");
   display.display();
 
@@ -151,20 +151,20 @@ void LbsLDisplayPrint(){                                           //Updates the
 
 
 void onLbsL1Change(unsigned int newValue) {
-  LbsLValue[1] = convertGaugeToInt(newValue, 10);
+  LbsLValue[0] = convertGaugeToInt(newValue, 10);
   LbsLDisplayPrint();
 }
 DcsBios::IntegerBuffer lbsL1Buffer(0x78bc, 0xffff, 0, onLbsL1Change);             //Generates the 1st digit of the LbsL gauge
 
 void onLbsL2Change(unsigned int newValue) {
-  LbsLValue[2] = convertGaugeToInt(newValue, 10);
+  LbsLValue[1] = convertGaugeToInt(newValue, 10);
   LbsLDisplayPrint();
 }
 DcsBios::IntegerBuffer lbsL2Buffer(0x78be, 0xffff, 0, onLbsL2Change);             //Generates the 2nd digit of the LbsL gauge
 
 
 void onLbsL3Change(unsigned int newValue) {
-  LbsLValue[3] = convertGaugeToInt(newValue, 10);
+  LbsLValue[2] = convertGaugeToInt(newValue, 10);
   LbsLDisplayPrint();
 }
 DcsBios::IntegerBuffer lbsL3Buffer(0x78c0, 0xffff, 0, onLbsL3Change);             //Generates the 3rd digit of the LbsL gauge
@@ -182,9 +182,9 @@ void LbsRDisplayPrint(){                                           //Updates the
   tcaselect(2);
   display.clearDisplay();
   display.setCursor(0,0);
+  display.print (LbsRValue[0]);
   display.print (LbsRValue[1]);
   display.print (LbsRValue[2]);
-  display.print (LbsRValue[3]);
   display.print ("0");
   display.display();
 
@@ -192,19 +192,19 @@ void LbsRDisplayPrint(){                                           //Updates the
 
 
 void onLbsR1Change(unsigned int newValue) {                                  //Generates the 1st digit of the LbsR gauge
-  LbsRValue[1] = convertGaugeToInt(newValue, 10);
+  LbsRValue[0] = convertGaugeToInt(newValue, 10);
   LbsRDisplayPrint();
 }
 DcsBios::IntegerBuffer lbsR1Buffer(0x78c4, 0xffff, 0, onLbsR1Change);
 
 void onLbsR2Change(unsigned int newValue) {                                  //Generates the 2nd digit of the LbsR gauge
-  LbsRValue[2] = convertGaugeToInt(newValue, 10);
+  LbsRValue[1] = convertGaugeToInt(newValue, 10);
   LbsRDisplayPrint();
 }
 DcsBios::IntegerBuffer lbsR2Buffer(0x78c6, 0xffff, 0, onLbsR2Change);
 
 void onLbsR3Change(unsigned int newValue) {                                  //Generates the 3rd digit of the LbsR gauge
-  LbsRValue[3] = convertGaugeToInt(newValue, 10);
+  LbsRValue[2] = convertGaugeToInt(newValue, 10);
   LbsRDisplayPrint();
 }
 DcsBios::IntegerBuffer lbsR3Buffer(0x78c8, 0xffff, 0, onLbsR3Change);
@@ -216,7 +216,7 @@ DcsBios::IntegerBuffer lbsR3Buffer(0x78c8, 0xffff, 0, onLbsR3Change);
 
       
 
-int bingoFuelDisplayValue[3];                                         //Initialise bingo fuel display array
+int bingoFuelDisplayValue[2];                                         //Initialise bingo fuel display array
 
 
 void bingoFuelDisplayPrint(){                                           //Updates the bingo fuel dispaly
@@ -224,21 +224,21 @@ void bingoFuelDisplayPrint(){                                           //Update
   tcaselect(0);
   display.clearDisplay();
   display.setCursor(0,0);
+  display.print (bingoFuelDisplayValue[0]);
   display.print (bingoFuelDisplayValue[1]);
-  display.print (bingoFuelDisplayValue[2]);
   display.print ("00");
   display.display();
 
 }
 
 void onBingo1Change(unsigned int newValue) {                                    //Generates the 1st digit of the bingo fuel gauge
-  bingoFuelDisplayValue[1] = convertGaugeToInt(newValue, 10);
+  bingoFuelDisplayValue[0] = convertGaugeToInt(newValue, 10);
   bingoFuelDisplayPrint();
 }
 DcsBios::IntegerBuffer bingo1Buffer(0x78cc, 0xffff, 0, onBingo1Change);
 
 void onBingo2Change(unsigned int newValue) {                                    //Generates the 2nd digit of the bingo fuel gauge
-  bingoFuelDisplayValue[2] = convertGaugeToInt(newValue, 10);
+  bingoFuelDisplayValue[1] = convertGaugeToInt(newValue, 10);
   bingoFuelDisplayPrint();
   }
 DcsBios::IntegerBuffer bingo2Buffer(0x78ce, 0xffff, 0, onBingo2Change);
